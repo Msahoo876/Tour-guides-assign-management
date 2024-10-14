@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides</title>
+    <style>
+        /* Reset CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .search-container {
+            display: flex;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+
+        .main-guide {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .guide-card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+        }
+
+        .guide-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .guide-details {
+            padding: 20px;
+        }
+
+        .guide-details h2 {
+            margin-bottom: 10px;
+        }
+
+        .guide-details p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <h1>Guides</h1>
+            <div class="search-container">
+                <form action="{{ url_for('search') }}" method="POST">
+                    <input type="text" name="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+                &nbsp 
+                <form action="{{ url_for('back') }}" method="POST">
+                    <button type="submit">Back</button>
+                </form>
+            </div>
+        </header>
+
+        <div class="main-guide">
+            {% for document in data %}
+            <div class="guide-card">
+                <img src="{{ url_for('static', filename=document.G_Image) }}" alt="">
+                <div class="guide-details">
+                    <h2>{{ document.G_Name }}</h2>
+                    <p>Guide ID: {{ document.GID }}</p>
+                    <p>Email: {{ document.G_Email }}</p>
+                    <p>Phone: {{ document.G_Phone }}</p>
+                    <p>Area: {{ document.G_Area }}</p>
+                    <p>Language: {{ document.G_Language }}</p>
+                    <p>Hourly Rate: {{ document.G_HourRate }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

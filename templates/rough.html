@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        .task:last-child {
+            margin-bottom: 0;
+        }
+
+        .task h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .task p {
+            margin: 0;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .task {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tourism</h1>
+        <ul class="task-list">
+            <li class="task">
+              <a href="{{ url_for('profile',email=email) }}">
+                <h3>My Profile</h3></a>
+                <p>Information Of User Profile</p>
+            </li>
+            <li class="task">
+              <a href="{{ url_for('guide') }}">
+                <h3>Guides</h3></a>
+                <p>See all the guides which are available</p>
+            </li>
+            <li class="task">
+              <a href="{{ url_for('book',email=email) }}">
+                <h3>Book</h3></a>
+                <p>Book your guide</p>
+            </li>
+            <li class="task">
+              <a href="{{ url_for('logout') }}">
+                <h3>Logout</h3></a>
+                <p>Thank you for using my task management system</p>
+            </li>
+            <!-- Add more tasks as needed -->
+        </ul>
+    </div>
+</body>
+
+</html>

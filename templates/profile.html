@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
+<style>
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>My Profile</h1>
+  {% for data in profile_data %}
+  <!-- Profile Information -->
+  <p id="fastname" name="fast">Fast Name: {{ data.fast_name }} </p>
+  <p id="lastname" name="last">Last Name: {{ data.last_name }} </p>
+  <p id="email" name="email">Email Id: {{ data.email_id }} </p>
+  <p id="email" name="email">Contact Number: {{ data.contact }} </p>
+  <p id="paaswd" name="passwd">Password: {{ data.password }} </p> 
+  {% endfor %}
+  <!-- Assign Task Button -->
+  
+ 
+  <form action="{{ url_for('back') }}" method="POST">
+  <button>Back to Dashboard</button>
+</form>
+
+<!-- Task Details Table -->
+<table id="task-details">
+  <thead>
+    <tr>
+      <th>Native Place</th>
+      <th>Visiting Place</th>
+      <th>Number of Persons</th>
+      <th>Starting Date</th>
+      <th>Ending Date</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody id="task-details-list">
+    {% for document in booking_data %}
+    <tr>
+      <th> {{ document.N_place }} </th>
+      <th> {{ document.V_place }} </th>
+      <th> {{ document.N_person }} </th>
+      <th> {{ document.S_date }} </th>
+      <th> {{ document.E_date }} </th>
+      <th> {{ document.T_price }} </th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+</div>
+
+</body>
+</html>
